@@ -2,6 +2,10 @@ package com.devsuperior.hrworker.interfaces.controller;
 
 import com.devsuperior.hrworker.domain.entities.Worker;
 import com.devsuperior.hrworker.domain.entities.services.WorkerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +17,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/workers")
 public class WorkerController {
+
+	private static Logger logger = LoggerFactory.getLogger(WorkerController.class);
+
+	@Autowired
+	private Environment env;
 
 	private final WorkerService workerService;
 
@@ -28,6 +37,8 @@ public class WorkerController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable UUID id){
+		logger.info("PORT = " + env.getProperty("local.server.port"));
+
 		Optional<Worker> worker = workerService.findById(id);
 		if(worker.isPresent()){
 			return new ResponseEntity<>(worker.get(), HttpStatus.OK);
