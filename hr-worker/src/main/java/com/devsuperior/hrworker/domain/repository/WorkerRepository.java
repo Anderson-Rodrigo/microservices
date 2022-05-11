@@ -1,4 +1,4 @@
-package com.devsuperior.hrworker.domain.entities.repository;
+package com.devsuperior.hrworker.domain.repository;
 
 import com.devsuperior.hrworker.domain.entities.Worker;
 import org.springframework.data.jpa.repository.JpaRepository;

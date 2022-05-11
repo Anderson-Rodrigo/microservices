@@ -1,7 +1,7 @@
-package com.devsuperior.hrworker.domain.entities.services;
+package com.devsuperior.hrworker.domain.services;
 
 import com.devsuperior.hrworker.domain.entities.Worker;
-import com.devsuperior.hrworker.domain.entities.repository.WorkerRepository;
+import com.devsuperior.hrworker.domain.repository.WorkerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
